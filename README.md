@@ -1,5 +1,5 @@
-# chatGPT-chatbot-spring-boot
-Backend wrapper for ChatGPT Chatbot application
+# chatGPT-chatbot-spring-boot-react
+Wrapper project for ChatGPT Chatbot application
 
 ## Prerequisite
 
@@ -22,6 +22,6 @@ Switch to the back-end/target folder and run the JAR file with the command:
 
 java -jar demo-0.0.1-SNAPSHOT.jar
 
-### How to access the running app?
+### How to access the backend app via Postman?
 Use Postman, you can launch the app by navigating to these two endpoints:
-* localhost:8500/api/v1/chat
+* localhost:8080/api/v1/chat
