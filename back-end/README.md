@@ -1,6 +1,15 @@
 # chatGPT-chatbot-spring-boot
 Backend wrapper for ChatGPT Chatbot application
 
+## Prerequisite
+
+1. Java 17+
+2. Maven
+3. NPM
+4. Before running the app on local, please visit the following URL and generate a new OpenAI API Key "https://platform.openai.com/account/api-keys" and add the key to the file "\back-end\src\main\resources\application-local.yml"
+
+![img.png](img.png)
+
 ### Run the app
 There are two scripts in the repository, you'll have to run based on the OS you have:
 
