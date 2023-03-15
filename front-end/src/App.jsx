@@ -54,14 +54,28 @@ function App() {
       },
       body: JSON.stringify(chatRequest)
     }).then((data) => {
-      return data.json();
+      if(data.ok) {
+        return data.json();
+      } else if(data.status == 401){
+        throw new Error('Your API key is invalid, please retry with another API key');
+      } else if(data.status == 429){
+        throw new Error('You exceeded your current quota, please check your plan and billing details');
+      } else if(data.status == 500){
+        throw new Error('The server had an error while processing your request, retry your request after a brief wait');
+      } else {
+        throw new Error('INTERNAL SERVER ERROR, please refresh the page and try again')
+      }
     }).then((data) => {
       console.log(data);
-      setMessages([...chatMessages, {
-        message: data.choices[0].message.content,
-        sender: "ChatGPT"
-      }]);
+        setMessages([...chatMessages, {
+          message: data.choices[0].message.content,
+          sender: "ChatGPT"
+        }]);
+        setIsTyping(false);
+    }).catch((error) => {
+      console.log("Error", error);
       setIsTyping(false);
+      window.alert(error);
     });
   }
 
