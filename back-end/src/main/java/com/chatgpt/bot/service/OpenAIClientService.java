@@ -45,7 +45,7 @@ public class OpenAIClientService {
 
         logger.info("Request made to chatGPT : {} at url :{}", chatGPTRequest, chatCompletionUrl);
         return restTemplate.exchange(
-              chatCompletionUrl, HttpMethod.POST, entity, ChatGPTResponse.class).getBody();
+                chatCompletionUrl, HttpMethod.POST, entity, ChatGPTResponse.class).getBody();
     }
 
 }

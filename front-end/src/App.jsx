@@ -37,46 +37,46 @@ function App() {
       } else {
         role = "user";
       }
-      return { role: role, content: messageObject.message}
+      return { role: role, content: messageObject.message }
     });
 
     const chatRequest = {
       "messages": [
-        ...apiMessages 
+        ...apiMessages
       ]
     }
 
     await fetch('http://localhost:8080/api/v1/chat',
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(chatRequest)
-    }).then((data) => {
-      if(data.ok) {
-        return data.json();
-      } else if(data.status == 401){
-        throw new Error('Your API key is invalid, please retry with another API key');
-      } else if(data.status == 429){
-        throw new Error('You exceeded your current quota, please check your plan and billing details');
-      } else if(data.status == 500){
-        throw new Error('The server had an error while processing your request, retry your request after a brief wait');
-      } else {
-        throw new Error('INTERNAL SERVER ERROR, please refresh the page and try again')
-      }
-    }).then((data) => {
-      console.log(data);
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(chatRequest)
+      }).then((data) => {
+        if (data.ok) {
+          return data.json();
+        } else if (data.status == 401) {
+          throw new Error('Your API key is invalid, please retry with another API key');
+        } else if (data.status == 429) {
+          throw new Error('You exceeded your current quota, please check your plan and billing details');
+        } else if (data.status == 500) {
+          throw new Error('The server had an error while processing your request, retry your request after a brief wait');
+        } else {
+          throw new Error('INTERNAL SERVER ERROR, please refresh the page and try again')
+        }
+      }).then((data) => {
+        console.log(data);
         setMessages([...chatMessages, {
           message: data.choices[0].message.content,
           sender: "ChatGPT"
         }]);
         setIsTyping(false);
-    }).catch((error) => {
-      console.log("Error", error);
-      setIsTyping(false);
-      window.alert(error);
-    });
+      }).catch((error) => {
+        console.log("Error", error);
+        setIsTyping(false);
+        window.alert(error);
+      });
   }
 
   return (
