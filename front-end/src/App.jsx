@@ -57,13 +57,13 @@ function App() {
         if (data.ok) {
           return data.json();
         } else if (data.status == 401) {
-          throw new Error('Your API key is invalid, please retry with another API key');
+          throw new Error('Your API key is invalid or inactive, please retry with another API key');
         } else if (data.status == 429) {
           throw new Error('You exceeded your current quota, please check your plan and billing details');
         } else if (data.status == 500) {
-          throw new Error('The server had an error while processing your request, retry your request after a brief wait');
+          throw new Error('The server had an error while processing your request, please refresh the page after a while and try again');
         } else {
-          throw new Error('INTERNAL SERVER ERROR, please refresh the page and try again')
+          throw new Error('Internal Server Error, please refresh the page and try again')
         }
       }).then((data) => {
         console.log(data);
