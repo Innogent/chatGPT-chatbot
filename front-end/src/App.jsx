@@ -46,7 +46,7 @@ function App() {
       ]
     }
 
-    await fetch('http://chatgptchatbot-env.eba-ud9qrmqe.us-east-2.elasticbeanstalk.com/api/v1/chat',
+    await fetch('http://localhost:8080/api/v1/chat',
     {
       method: "POST",
       headers: {

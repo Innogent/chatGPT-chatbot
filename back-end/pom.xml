@@ -37,6 +37,18 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>aws</id>
+		</profile>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
